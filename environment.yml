@@ -1,0 +1,22 @@
+name: cognitive-os
+channels: [conda-forge, pytorch]
+dependencies:
+  - python=3.12
+  - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cpuonly
+  - numpy
+  - pandas
+  - scikit-learn
+  - networkx
+  - pyyaml
+  - jinja2
+  - tqdm
+  - matplotlib
+  - pip:
+      - transformers>=4.43.0
+      - peft>=0.11.0
+      - datasets
+      - accelerate

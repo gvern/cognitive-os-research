@@ -1,0 +1,6 @@
+data:
+  eval_file: data/persona_eval.jsonl
+eval:
+  judge: rubric
+  n_samples: 10
+  report_file: docs/ft_eval_report.json

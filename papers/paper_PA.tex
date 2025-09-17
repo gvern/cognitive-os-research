@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{neurips_2025} % ou iclr2025/chi selon soumission
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+	itle{User Knowledge Graphs for Personal Cognitive Systems}
+
+\author{
+	Gustave Vernay \\
+	Avisia / Aivancity / École Polytechnique (candidate PhD) \\
+		exttt{gustave.vernay@example.com} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We propose a dynamic user knowledge graph (UKG) as a core representation 
+for personal cognitive systems. Unlike static vector-based retrieval, UKGs 
+encode entities, temporal relations, and provenance, supporting both robust 
+retrieval and long-term consolidation. We present an incremental update 
+mechanism and evaluate coherence, coverage, and groundedness.
+\end{abstract}
+
+\section{Introduction}
+- Motivation: Need for coherent user memory representations.  
+- Limitations of current RAG (hallucinations, lack of traceability).  
+- Contribution: Dynamic UKG framework.  
+
+\section{Related Work}
+- Knowledge graphs (Wikidata, ConceptNet).  
+- RAG and hybrid retrieval.  
+- Cognitive architectures (ACT-R, SOAR).  
+
+\section{Method}
+- Schema design (entities, goals, projects).  
+- Incremental updates (event sourcing, CRDT-like merges).  
+- Consolidation cycles.  
+
+\section{Experiments}
+- Synthetic personal dataset (notes, tasks, calendar).  
+- Baselines: vector-only, static KG.  
+- Metrics: coherence, coverage, grounded QA.  
+
+\section{Results}
+- UKG improves groundedness by X\%.  
+- Lower contradiction rate compared to vector-only.  
+
+\section{Conclusion}
+- UKG as foundation for Cognitive OS.  
+- Future work: probabilistic UKGs, integration with fine-tuned LLMs.  
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}
+\input{../docs/templates/paper_PA_stub.tex}

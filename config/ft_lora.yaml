@@ -1,0 +1,16 @@
+model:
+  base_model: mistralai/Mistral-7B-Instruct-v0.3
+  load_4bit: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+data:
+  train_file: data/persona_train.jsonl
+  eval_file: data/persona_eval.jsonl
+train:
+  epochs: 1
+  lr: 2e-4
+  batch_size: 4
+  grad_accum: 2
+  save_dir: outputs/lora_adapters
+seed: 42

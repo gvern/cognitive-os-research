@@ -1,0 +1,7 @@
+data:
+  input_json: data/synthetic_persona_v1.json
+kg:
+  min_confidence: 0.35
+retrieval:
+  top_k: 8
+seed: 42

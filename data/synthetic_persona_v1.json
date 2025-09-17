@@ -1,0 +1,15 @@
+{
+  "user_id": "synthetic_user_001",
+  "notes": [
+    {
+      "id": "n1",
+      "text": "Goal: Improve Italian to B2; practice 30 minutes daily.",
+      "timestamp": "2025-02-01"
+    },
+    {
+      "id": "n2",
+      "text": "Project: Cognitive OS prototype; tasks: design KG schema; implement consolidation.",
+      "timestamp": "2025-02-05"
+    }
+  ]
+}

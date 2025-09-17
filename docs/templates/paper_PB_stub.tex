@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{neurips_2025}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+	itle{Low-data Fine-tuning for Personalized Cognitive Agents}
+
+\author{
+	Gustave Vernay \\
+	Avisia / Aivancity / École Polytechnique (candidate PhD) \\
+		exttt{gustave.vernay@example.com} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We investigate low-data fine-tuning strategies to adapt large language 
+models to individual users with limited data (under 50k tokens). We compare 
+LoRA, QLoRA, and P-tuning v2 on synthetic persona datasets and evaluate 
+alignment, forgetting, and efficiency. Results show that lightweight adapters 
+achieve stable personalization with minimal compute.
+\end{abstract}
+
+\section{Introduction}
+- Problem: LLMs lack persistent personalization.  
+- Challenge: user data is scarce and sensitive.  
+- Contribution: systematic evaluation of low-data FT methods.  
+
+\section{Background}
+- LoRA/QLoRA.  
+- P-tuning v2, prefix adapters.  
+- Personalization benchmarks.  
+
+\section{Method}
+- Synthetic tiny persona dataset.  
+- Task suite: QA, preference alignment.  
+- Evaluation protocol (alignment, forgetting, compute budget).  
+
+\section{Results}
+- LoRA stable at 10k tokens, QLoRA efficient at 4-bit.  
+- Forgetting mitigated with rehearsal prompts.  
+
+\section{Conclusion}
+- Low-data fine-tuning viable for Cognitive OS adaptation.  
+- Future work: continual learning, cross-modal personalization.  
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}
+%% Insert the prefilled LaTeX from the chat here.
