@@ -1,0 +1,30 @@
+# Environments
+.venv
+.env
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Outputs and caches
+outputs/
+
+# LaTeX build artifacts
+papers/*.aux
+papers/*.log
+papers/*.out
+papers/*.toc
+papers/*.bbl
+papers/*.blg
+papers/*.synctex.gz
+papers/*.fdb_latexmk
+papers/*.fls
+papers/*.tex.bak
+papers/*.pdf
+
+# Checkpoints
+*.ipynb_checkpoints

@@ -1,54 +1,127 @@
-\documentclass{article}
-\usepackage{neurips_2025}
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{times}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{booktabs}
+\graphicspath{{../docs/figures/}{../../docs/figures/}{../docs/}{../../docs/}}
 
-	itle{Low-data Fine-tuning for Personalized Cognitive Agents}
-
-\author{
-	Gustave Vernay \\
-	Avisia / Aivancity / École Polytechnique (candidate PhD) \\
-		exttt{gustave.vernay@example.com} \\
-}
+\title{Low-data Fine-tuning for Personalized Cognitive Agents}
+\author{Gustave Vernay \\ Avisia / Aivancity / \'{E}cole Polytechnique (candidate PhD)}
+\date{}
 
 \begin{document}
-
 \maketitle
 
 \begin{abstract}
-We investigate low-data fine-tuning strategies to adapt large language 
-models to individual users with limited data (under 50k tokens). We compare 
-LoRA, QLoRA, and P-tuning v2 on synthetic persona datasets and evaluate 
-alignment, forgetting, and efficiency. Results show that lightweight adapters 
-achieve stable personalization with minimal compute.
+We investigate low-data fine-tuning strategies (LoRA/QLoRA/P-tuning v2) for adapting LLMs to a single user under data scarcity. We evaluate alignment, forgetting, and efficiency on synthetic persona datasets.
 \end{abstract}
 
 \section{Introduction}
-- Problem: LLMs lack persistent personalization.  
-- Challenge: user data is scarce and sensitive.  
-- Contribution: systematic evaluation of low-data FT methods.  
+% TODO: Frame personalization need under privacy and scarcity constraints.
+\subsection{Context}
+Personal agents require individualized behavior, yet user data is limited and sensitive.
+
+\subsection{Problem}
+Full fine-tuning is compute-heavy and risks overfitting/forgetting under low-data regimes.
+
+\subsection{Contributions}
+\begin{itemize}
+	\item A benchmark of light-weight methods (LoRA, QLoRA, P-tuning v2) for tiny-persona settings.
+	\item An evaluation protocol measuring alignment, catastrophic forgetting, and compute budget.
+	\item Analysis of trade-offs and ablations (rank, token budget).
+\end{itemize}
+
+% Figure: FT full vs lightweight adapters (placeholder)
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{pb_full_vs_adapters.pdf} % expected at docs/figures/pb_full_vs_adapters.pdf
+%   \caption{Comparison of full fine-tuning vs lightweight adapters (LoRA/QLoRA/Prefix).}
+%   \label{fig:full-vs-adapters}
+% \end{figure}
 
 \section{Background}
-- LoRA/QLoRA.  
-- P-tuning v2, prefix adapters.  
-- Personalization benchmarks.  
+\subsection{Parameter-Efficient Fine-Tuning}
+LoRA and QLoRA reduce trainable parameters and memory via low-rank updates and quantization.
+
+\subsection{Prefix/Prompt Tuning}
+P-tuning v2 and prefix-tuning optimize soft prompts for task specialization.
+
+\subsection{Continual Learning and Personalization}
+We relate PEFT to continual learning for maintaining prior capabilities.
+
+% Table: Technical characteristics
+\begin{table}[t]
+	\centering
+	\caption{Technical characteristics of PEFT methods: trained parameters, VRAM, and speed.}
+	\label{tab:tech}
+	\input{../docs/tables/pb_background_tech.tex}
+\end{table}
 
 \section{Method}
-- Synthetic tiny persona dataset.  
-- Task suite: QA, preference alignment.  
-- Evaluation protocol (alignment, forgetting, compute budget).  
+\subsection{Dataset}
+We consider a tiny-persona corpus (\textless{}50k tokens) describing preferences and goals.
+
+\subsection{Tasks}
+QA, preference adherence, and refusal out-of-scope.
+
+\subsection{Metrics}
+Alignment score (judge LLM), catastrophic forgetting index, and compute budget (time, VRAM).
+
+% Figure: Experimental protocol (placeholder)
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{pb_protocol.pdf} % expected at docs/figures/pb_protocol.pdf
+%   \caption{Train → eval → judge pipeline for low-data FT.}
+%   \label{fig:protocol}
+% \end{figure}
+
+\section{Experiments}
+\subsection{Models and Baselines}
+We evaluate Mistral 7B, LLaMA 3B, and baselines including zero-shot and prompt-only.
+
+\subsection{Ablations}
+LoRA rank and token budget sensitivity analyses.
+
+% Table: Dataset statistics
+\begin{table}[t]
+	\centering
+	\caption{Dataset statistics for PB: number of personas, prompts, and token counts.}
+	\label{tab:dataset-pb}
+	\input{../docs/tables/pb_dataset_stats.tex}
+\end{table}
 
 \section{Results}
-- LoRA stable at 10k tokens, QLoRA efficient at 4-bit.  
-- Forgetting mitigated with rehearsal prompts.  
+\subsection{Main Comparisons}
+LoRA offers stable gains; QLoRA is memory-efficient under 4-bit quantization.
+
+\subsection{Forgetting and Rehearsal}
+Rehearsal reduces forgetting while preserving alignment.
+
+% Figures: performance vs dataset size; alignment/forgetting bars (placeholders)
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{pb_perf_vs_size.pdf} % expected at docs/figures/pb_perf_vs_size.pdf
+%   \caption{Performance vs. dataset size under different PEFT methods.}
+%   \label{fig:perf-vs-size}
+% \end{figure}
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{pb_alignment_forgetting.pdf} % expected at docs/figures/pb_alignment_forgetting.pdf
+%   \caption{Alignment and forgetting across methods.}
+%   \label{fig:align-forget}
+% \end{figure}
+
+\section{Discussion}
+\subsection{Trade-offs}
+Analyze efficiency vs robustness in low-data regimes; discuss privacy (local FT feasibility).
+
+\subsection{Limitations}
+Multimodal transfer and dependence on data quality.
 
 \section{Conclusion}
-- Low-data fine-tuning viable for Cognitive OS adaptation.  
-- Future work: continual learning, cross-modal personalization.  
+Low-data FT is viable; future work includes continual learning and multimodal adaptation.
 
 \bibliographystyle{plain}
 \bibliography{refs}
-
 \end{document}
-\input{../docs/templates/paper_PB_stub.tex}

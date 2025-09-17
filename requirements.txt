@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+networkx
+pyyaml
+jinja2
+tqdm
+matplotlib
+transformers>=4.43.0
+peft>=0.11.0
+datasets
+accelerate
